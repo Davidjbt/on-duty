@@ -2,19 +2,21 @@ package com.david.onduty
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.david.onduty.ui.theme.OnDutyTheme
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.david.onduty.ui.CalendarAdapter
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        super.setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
+
+        val dataSet = arrayOf(1, 2, 3)
+        val adapter = CalendarAdapter(dataSet)
+
+        val recyclerView: RecyclerView = findViewById(R.id.calendarRecyclerView)
+        recyclerView.layoutManager = GridLayoutManager(this, 7)
+        recyclerView.adapter = adapter
+
     }
 }
