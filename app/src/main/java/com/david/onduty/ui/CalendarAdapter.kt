@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.david.onduty.R
 import kotlin.random.Random
 
-class CalendarAdapter(private val dataSet: Array<Int>) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
+class CalendarAdapter(private var monthDays: Array<Int>) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dayView: TextView
@@ -30,9 +30,11 @@ class CalendarAdapter(private val dataSet: Array<Int>) : RecyclerView.Adapter<Ca
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dayView.text = dataSet[position].toString()
+        holder.dayView.text = monthDays[position].toString()
 
-        for (i in 1..Random.nextInt(1, 5)) {
+        holder.eventsDotsLayout.removeAllViews()
+
+        for (i in 1..Random.nextInt(0, 5)) {
 
             if (i == 4) {
                 val eventPlusView = ImageView(holder.itemView.context).apply {
@@ -53,7 +55,12 @@ class CalendarAdapter(private val dataSet: Array<Int>) : RecyclerView.Adapter<Ca
     }
 
     override fun getItemCount(): Int {
-        return dataSet.size
+        return monthDays.size
+    }
+
+    fun updateMonthDays(monthDays: Array<Int>) {
+        this.monthDays = monthDays
+        notifyDataSetChanged()
     }
 
 }

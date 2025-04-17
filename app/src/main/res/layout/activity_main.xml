@@ -12,6 +12,7 @@
         android:layout_marginTop="20dp">
 
         <Button
+            android:id="@+id/previousMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -32,6 +33,7 @@
 
 
         <Button
+            android:id="@+id/nextMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
